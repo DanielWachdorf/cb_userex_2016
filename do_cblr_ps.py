@@ -95,7 +95,7 @@ if __name__ == '__main__':
     # format our auth token for use in the headers
     headers = {'X-Auth-Token': sys.argv[1]}
 
-    sess_id = establish_session(sys.argv[2], headers, 5)
+    sess_id = establish_session(sys.argv[2], headers, int(sys.argv[3]))
 
     cmd_data = run_ps(sys.argv[2], headers, sess_id)
 

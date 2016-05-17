@@ -106,18 +106,18 @@ def do_put_file(url, headers, session_id, file_path, remote_path):
 
 if __name__ == '__main__':
 
-    if len(sys.argv) != 5:
+    if len(sys.argv) != 6:
         print "Usage: python do_get.py <Token> <URL> <SensorId> <localFile> <remotePath>\n"
         sys.exit(-1)
 
     # format our auth token for use in the headers
     headers = {'X-Auth-Token': sys.argv[1]}
 
-    sess_id = establish_session(sys.argv[2], headers, 5)
+    sess_id = establish_session(sys.argv[2], headers, int(sys.argv[3]))
 
-    print "Putting file %s to %s" % (sys.argv[3], sys.argv[4])
+    print "Putting file %s to %s" % (sys.argv[4], sys.argv[5])
 
-    cmd_data = do_put_file(sys.argv[2], headers, sess_id, sys.argv[3], sys.argv[4])
+    cmd_data = do_put_file(sys.argv[2], headers, sess_id, sys.argv[4], sys.argv[5])
 
     print json.dumps(cmd_data, indent=4)
 
